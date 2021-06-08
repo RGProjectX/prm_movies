@@ -2,7 +2,7 @@ from typing import Optional
 import requests
 from bs4 import BeautifulSoup
 from fastapi import FastAPI
-
+import lxml
 def main(category,page):
     url = f'https://prmovies.mx/genre/{category}/page/{page}/'
     req = requests.get(url)
