@@ -36,7 +36,7 @@ def details(slug):
                 'duration': soup.find('span',attrs={'itemprop':'duration'}).text,
                 'desc': soup.find('p',class_='f-desc').text,
                 'genre': ','.join([x.text for x in soup.find('div',class_='mvici-left').find_all('a',attrs={'rel':'category tag'})]),
-                'link': soup.find('a',class_='lnk-lnk lnk-1').get('href')
+                'link': if soup.find('a',class_='lnk-lnk lnk-1').get('href') is None: soup.find('iframe').get('src')
             }
             return data
         except Exception as e:
